@@ -24,7 +24,8 @@ This is a simple API for accessing geographical data from a MySQL database.
    node index.js
    ```
 2. Access the API endpoints:
-   - `GET /getRegBrunva?id=<region_id>&year=<year>`: Retrieve geographical data for a specific region and year.
+   - `GET /api/getRegBrunva?id=<region_id>&year=<year>`: Retrieve geographical data for a specific region and year.
+   - `GET /api/getPayGender?id=<region_id>&fyear=<fyear>&myear=<myear>`: Retrieve payment data by gender for a specific region and years.
    - `GET /`: Basic endpoint to check if the server is running.
 
 ## Example
@@ -32,7 +33,13 @@ This is a simple API for accessing geographical data from a MySQL database.
 To retrieve data for region with ID 1 and year 2020, make a GET request to:
 
 ```
-http://localhost:3001/getRegBrunva?id=1&year=2020
+http://localhost:3001/api/getRegBrunva?id=1&year=2020
+```
+
+To retrieve payment data by gender for region with ID 1, female year 2020, and male year 2021, make a GET request to:
+
+```
+http://localhost:3001/api/getPayGender?id=1&fyear=2020&myear=2021
 ```
 
 ## Dependencies
