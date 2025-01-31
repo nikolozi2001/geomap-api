@@ -6,6 +6,6 @@ const valAddedController = require("../controllers/valAdded.controller");
 
 router.get("/getRegBrunva", regBrunvaController.getRegBrunva);
 router.get("/getPayGender", payGenderController.getPayGender);
-router.get("/valAdded", valAddedController.valAdded);
+router.get("/getValAdded", valAddedController.getValAdded);
 
 module.exports = router;

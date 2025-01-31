@@ -1,6 +1,6 @@
 const con = require("../config/db.config");
 
-exports.valAdded = (req, res) => {
+exports.getValAdded = (req, res) => {
   let id = req.query.id.toString();
   let year = req.query.year.toString();
 
