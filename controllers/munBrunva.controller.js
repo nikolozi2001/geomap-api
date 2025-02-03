@@ -1,10 +1,10 @@
 const con = require("../config/db.config");
 
-exports.getValAdded = (req, res) => {
+exports.getMunBrunva = (req, res) => {
   let year = req.query.year.toString();
 
   con.query(
-    `SELECT  region_id, name_ge, name_en, w_${year} FROM reg_damatebuli_girebuleba`,
+    `SELECT municipal_, name_ge, name_en, w_${year} FROM mun_brunva`,
     function (err, result) {
       if (err) {
         console.error("Query error:", err);
