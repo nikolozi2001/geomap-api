@@ -28,6 +28,12 @@ This is a simple API for accessing geographical data from a MySQL database.
    - `GET /api/getPayGender?fyear=<fyear>&myear=<myear>`: Retrieve payment data by gender for specific years.
    - `GET /api/getValAdded?year=<year>`: Retrieve value-added data for a specific year.
    - `GET /api/getMunBrunva?year=<year>`: Retrieve municipal data for a specific year.
+   - `GET /api/getMunValAdded?year=<year>`: Retrieve municipal value-added data for a specific year.
+   - `GET /api/getMunPayGender?fyear=<fyear>&myear=<myear>`: Retrieve municipal payment data by gender for specific years.
+   - `GET /api/getRegEmployees?year=<year>`: Retrieve regional employee data for a specific year.
+   - `GET /api/getMunEmployees?year=<year>`: Retrieve municipal employee data for a specific year.
+   - `GET /api/getRegEmployed?year=<year>`: Retrieve regional employed data for a specific year.
+   - `GET /api/getMunEmployed?year=<year>`: Retrieve municipal employed data for a specific year.
    - `GET /`: Basic endpoint to check if the server is running.
 
 ## Example
