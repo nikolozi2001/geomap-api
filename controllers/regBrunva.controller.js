@@ -1,17 +1,18 @@
 const con = require("../config/db.config");
 
-exports.getRegBrunva = (req, res) => {
-  let year = req.query.year.toString();
+exports.getRegBrunva = async (req, res) => {
+  const year = (req.query.year || "").toString();
 
-  con.query(
-    `SELECT region_id, name_ge, name_en, w_${year} FROM reg_brunva`,
-    function (err, result) {
-      if (err) {
-        console.error("Query error:", err);
-        res.status(500).send("Internal Server Error");
-      } else {
-        res.send(result);
-      }
-    }
-  );
+  try {
+    const [rows] = await con.query(
+      `SELECT region_id, name_ge, name_en, w_${year} FROM reg_brunva`
+    );
+    res.json(rows);
+  } catch (error) {
+    console.error("Query error:", error);
+    res.status(500).json({
+      error: "Internal Server Error",
+      details: error.message,
+    });
+  }
 };

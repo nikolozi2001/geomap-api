@@ -26,30 +26,40 @@ const regIntConsumptionController = require("../controllers/regIntConsumption.co
 const munIntConsumptionController = require("../controllers/munIntConsumption.controller");
 const regEmployeesGenderController = require("../controllers/regEmployeesGender.controller");
 
-router.get("/getRegBrunva", regBrunvaController.getRegBrunva);
-router.get("/getPayGender", payGenderController.getPayGender);
-router.get("/getValAdded", valAddedController.getValAdded);
-router.get("/getMunBrunva", munBrunvaController.getMunBrunva);
-router.get("/getMunValAdded", munValAddedController.getMunValAdded);
-router.get("/getMunPayGender", munPayGenderController.getMunPayGender);
-router.get("/getRegEmployees", regEmployeesController.getRegEmployees);
-router.get("/getMunEmployees", munEmployeesController.getMunEmployees);
-router.get("/getRegEmployed", regEmployedController.getRegEmployed);
-router.get("/getMunEmployed", munEmployedController.getMunEmployed);
-router.get("/getRegResale", regResaleController.getRegResale);
-router.get("/getMunResale", munResaleController.getMunResale);
-router.get("/getRegInvestment", regInvestmentController.getRegInvestment);
-router.get("/getMunInvestment", munInvestmentController.getMunInvestment);
-router.get("/getRegProdVal", regProdValController.getRegProdVal);
-router.get("/getMunProdVal", munProdValController.getMunProdVal);
-router.get("/getRegPurchases", regPurchasesController.getRegPurchases);
-router.get("/getMunPurchases", munPurchasesController.getMunPurchases);
-router.get("/getRegRemuneration", regRemunerationController.getRegRemuneration);
-router.get("/getMunRemuneration", munRemunerationController.getMunRemuneration);
-router.get("/getRegCosts", regCostsController.getRegCosts);
-router.get("/getMunCosts", munCostsController.getMunCosts);
-router.get("/getRegIntConsumption", regIntConsumptionController.getRegIntConsumption);
-router.get("/getMunIntConsumption", munIntConsumptionController.getMunIntConsumption);
-router.get("/getRegEmployeesGender", regEmployeesGenderController.getRegEmployeesGender);
+// Define routes with error handling
+const handleRoute = (controller, method) => {
+  return (req, res) => {
+    if (typeof controller[method] !== 'function') {
+      return res.status(500).json({ error: `Handler ${method} is not implemented` });
+    }
+    return controller[method](req, res);
+  };
+};
+
+router.get("/getRegBrunva", handleRoute(regBrunvaController, 'getRegBrunva'));
+router.get("/getPayGender", handleRoute(payGenderController, 'getPayGender'));
+router.get("/getValAdded", handleRoute(valAddedController, 'getValAdded'));
+router.get("/getMunBrunva", handleRoute(munBrunvaController, 'getMunBrunva'));
+router.get("/getMunValAdded", handleRoute(munValAddedController, 'getMunValAdded'));
+router.get("/getMunPayGender", handleRoute(munPayGenderController, 'getMunPayGender'));
+router.get("/getRegEmployees", handleRoute(regEmployeesController, 'getRegEmployees'));
+router.get("/getMunEmployees", handleRoute(munEmployeesController, 'getMunEmployees'));
+router.get("/getRegEmployed", handleRoute(regEmployedController, 'getRegEmployed'));
+router.get("/getMunEmployed", handleRoute(munEmployedController, 'getMunEmployed'));
+router.get("/getRegResale", handleRoute(regResaleController, 'getRegResale'));
+router.get("/getMunResale", handleRoute(munResaleController, 'getMunResale'));
+router.get("/getRegInvestment", handleRoute(regInvestmentController, 'getRegInvestment'));
+router.get("/getMunInvestment", handleRoute(munInvestmentController, 'getMunInvestment'));
+router.get("/getRegProdVal", handleRoute(regProdValController, 'getRegProdVal'));
+router.get("/getMunProdVal", handleRoute(munProdValController, 'getMunProdVal'));
+router.get("/getRegPurchases", handleRoute(regPurchasesController, 'getRegPurchases'));
+router.get("/getMunPurchases", handleRoute(munPurchasesController, 'getMunPurchases'));
+router.get("/getRegRemuneration", handleRoute(regRemunerationController, 'getRegRemuneration'));
+router.get("/getMunRemuneration", handleRoute(munRemunerationController, 'getMunRemuneration'));
+router.get("/getRegCosts", handleRoute(regCostsController, 'getRegCosts'));
+router.get("/getMunCosts", handleRoute(munCostsController, 'getMunCosts'));
+router.get("/getRegIntConsumption", handleRoute(regIntConsumptionController, 'getRegIntConsumption'));
+router.get("/getMunIntConsumption", handleRoute(munIntConsumptionController, 'getMunIntConsumption'));
+router.get("/getRegEmployeesGender", handleRoute(regEmployeesGenderController, 'getRegEmployeesGender'));
 
 module.exports = router;
