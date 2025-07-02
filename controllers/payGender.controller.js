@@ -6,7 +6,7 @@ exports.getPayGender = async (req, res) => {
 
   try {
     const [rows] = await con.query(
-      `SELECT REGION_ID, NAME_GE, F_${fyear}, M_${myear} FROM reg_anazgaureba_sqesit`
+      `SELECT region_id, name_ge, name_en, f_${fyear}, m_${myear} FROM reg_anazgaureba_sqesit`
     );
     res.json(rows);
   } catch (error) {
