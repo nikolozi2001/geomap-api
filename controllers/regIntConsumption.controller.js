@@ -1,6 +1,6 @@
 const con = require("../config/db.config");
 
-exports.getIntConsumption = async (req, res) => {
+exports.getRegIntConsumption = async (req, res) => {
   const year = (req.query.year || "").toString();
 
   try {
