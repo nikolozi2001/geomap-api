@@ -37,6 +37,7 @@ const handleRoute = (controller, method) => {
 };
 
 router.get("/getRegBrunva", handleRoute(regBrunvaController, 'getRegBrunva'));
+router.get("/getRegBrunva/:region_id", handleRoute(regBrunvaController, 'getRegBrunvaByRegionId'));
 router.get("/getPayGender", handleRoute(payGenderController, 'getPayGender'));
 router.get("/getValAdded", handleRoute(valAddedController, 'getValAdded'));
 router.get("/getMunBrunva", handleRoute(munBrunvaController, 'getMunBrunva'));
