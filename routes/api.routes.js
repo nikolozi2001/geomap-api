@@ -39,7 +39,9 @@ const handleRoute = (controller, method) => {
 router.get("/getRegBrunva", handleRoute(regBrunvaController, 'getRegBrunva'));
 router.get("/getRegBrunva/:region_id", handleRoute(regBrunvaController, 'getRegBrunvaByRegionId'));
 router.get("/getPayGender", handleRoute(payGenderController, 'getPayGender'));
+router.get("/getRegPayGender/:region_id", handleRoute(payGenderController, 'getPayGenderByRegionId'));
 router.get("/getValAdded", handleRoute(valAddedController, 'getValAdded'));
+router.get("/getRegValAdded/:region_id", handleRoute(valAddedController, 'getValAddedByRegionId'));
 router.get("/getMunBrunva", handleRoute(munBrunvaController, 'getMunBrunva'));
 router.get("/getMunValAdded", handleRoute(munValAddedController, 'getMunValAdded'));
 router.get("/getMunPayGender", handleRoute(munPayGenderController, 'getMunPayGender'));
