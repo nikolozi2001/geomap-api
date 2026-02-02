@@ -1,10 +1,10 @@
 const db = require("../config/db.config");
 
 /**
- * Get all municipal input data
+ * Get all municipal wliuri (annual) data
  * Query parameters: year, month (optional)
  */
-exports.getMunInp = async (req, res) => {
+exports.getMunWliuri = async (req, res) => {
   try {
     const { year, month } = req.query;
     
@@ -19,7 +19,7 @@ exports.getMunInp = async (req, res) => {
         [value],
         shape_leng,
         shape_area
-      FROM [geomap].[geomap].[mun_inp]
+      FROM [geomap].[geomap].[mun_wliuri]
     `;
     
     const params = [];
@@ -46,7 +46,7 @@ exports.getMunInp = async (req, res) => {
     
     console.log("Executing query:", query);
     
-    const [results] = await db.query2(query, params);
+    const [results] = await db.query(query, params);
     
     if (!results || results.length === 0) {
       return res.status(404).json({
@@ -79,11 +79,11 @@ exports.getMunInp = async (req, res) => {
 };
 
 /**
- * Get municipal input data by municipal ID
+ * Get municipal wliuri data by municipal ID
  * Path parameter: municipal_id
  * Query parameters: year, month (optional)
  */
-exports.getMunInpByMunicipal = async (req, res) => {
+exports.getMunWliuriByMunicipal = async (req, res) => {
   try {
     const { municipal_id } = req.params;
     const { year, month } = req.query;
@@ -108,7 +108,7 @@ exports.getMunInpByMunicipal = async (req, res) => {
         [value],
         shape_leng,
         shape_area
-      FROM [geomap].[geomap].[mun_inp]
+      FROM [geomap].[geomap].[mun_wliuri]
       WHERE municipal_ = ?
     `;
     
@@ -136,7 +136,7 @@ exports.getMunInpByMunicipal = async (req, res) => {
     
     console.log("Executing query:", query);
     
-    const [results] = await db.query2(query, params);
+    const [results] = await db.query(query, params);
     
     if (!results || results.length === 0) {
       return res.status(404).json({
@@ -171,7 +171,7 @@ exports.getMunInpByMunicipal = async (req, res) => {
  * Get data for a specific year and month combination
  * Query parameters: year (required), month (required)
  */
-exports.getMunInpByYearMonth = async (req, res) => {
+exports.getMunWliuriByYearMonth = async (req, res) => {
   try {
     const { year, month } = req.query;
     
@@ -195,14 +195,14 @@ exports.getMunInpByYearMonth = async (req, res) => {
         [value],
         shape_leng,
         shape_area
-      FROM [geomap].[geomap].[mun_inp]
+      FROM [geomap].[geomap].[mun_wliuri]
       WHERE [year] = ? AND [month] = ?
       ORDER BY municipal_
     `;
     
     console.log("Executing query:", query);
     
-    const [results] = await db.query2(query, [year, month]);
+    const [results] = await db.query(query, [year, month]);
     
     if (!results || results.length === 0) {
       return res.status(404).json({
@@ -235,19 +235,19 @@ exports.getMunInpByYearMonth = async (req, res) => {
 /**
  * Get available years and months
  */
-exports.getMunInpAvailablePeriods = async (req, res) => {
+exports.getMunWliuriAvailablePeriods = async (req, res) => {
   try {
     const query = `
       SELECT DISTINCT 
         [year],
         [month]
-      FROM [geomap].[geomap].[mun_inp]
+      FROM [geomap].[geomap].[mun_wliuri]
       ORDER BY [year] DESC, [month] DESC
     `;
     
     console.log("Executing query:", query);
     
-    const [results] = await db.query2(query);
+    const [results] = await db.query(query);
     
     if (!results || results.length === 0) {
       return res.status(404).json({

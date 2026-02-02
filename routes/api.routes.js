@@ -26,6 +26,7 @@ const regIntConsumptionController = require("../controllers/regIntConsumption.co
 const munIntConsumptionController = require("../controllers/munIntConsumption.controller");
 const regEmployeesGenderController = require("../controllers/regEmployeesGender.controller");
 const munInpController = require("../controllers/munInp.controller");
+const munWliuriController = require("../controllers/munWliuri.controller");
 
 // Define routes with error handling
 const handleRoute = (controller, method) => {
@@ -81,5 +82,11 @@ router.get("/getMunInp", handleRoute(munInpController, 'getMunInp'));
 router.get("/getMunInp/:municipal_id", handleRoute(munInpController, 'getMunInpByMunicipal'));
 router.get("/getMunInpByYearMonth", handleRoute(munInpController, 'getMunInpByYearMonth'));
 router.get("/getMunInpAvailablePeriods", handleRoute(munInpController, 'getMunInpAvailablePeriods'));
+// Municipal Wliuri endpoints (Annual data from geomap database)
+router.get("/getMunWliuri", handleRoute(munWliuriController, 'getMunWliuri'));
+router.get("/getMunWliuri/:municipal_id", handleRoute(munWliuriController, 'getMunWliuriByMunicipal'));
+router.get("/getMunWliuriByYearMonth", handleRoute(munWliuriController, 'getMunWliuriByYearMonth'));
+router.get("/getMunWliuriAvailablePeriods", handleRoute(munWliuriController, 'getMunWliuriAvailablePeriods'));
+
 
 module.exports = router;
