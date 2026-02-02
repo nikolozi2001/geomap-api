@@ -25,6 +25,7 @@ const munCostsController = require("../controllers/munCosts.controller");
 const regIntConsumptionController = require("../controllers/regIntConsumption.controller");
 const munIntConsumptionController = require("../controllers/munIntConsumption.controller");
 const regEmployeesGenderController = require("../controllers/regEmployeesGender.controller");
+const munInpController = require("../controllers/munInp.controller");
 
 // Define routes with error handling
 const handleRoute = (controller, method) => {
@@ -74,5 +75,11 @@ router.get("/getRegIntConsumption/:region_id", handleRoute(regIntConsumptionCont
 router.get("/getMunIntConsumption", handleRoute(munIntConsumptionController, 'getMunIntConsumption'));
 router.get("/getRegEmployeesGender", handleRoute(regEmployeesGenderController, 'getRegEmployeesGender'));
 router.get("/getRegEmployeesGender/:region_id", handleRoute(regEmployeesGenderController, 'getRegEmployeesGenderByRegionId'));
+
+// Municipal Input endpoints (from geomap4 database)
+router.get("/getMunInp", handleRoute(munInpController, 'getMunInp'));
+router.get("/getMunInp/:municipal_id", handleRoute(munInpController, 'getMunInpByMunicipal'));
+router.get("/getMunInpByYearMonth", handleRoute(munInpController, 'getMunInpByYearMonth'));
+router.get("/getMunInpAvailablePeriods", handleRoute(munInpController, 'getMunInpAvailablePeriods'));
 
 module.exports = router;
