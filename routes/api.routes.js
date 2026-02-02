@@ -25,8 +25,11 @@ const munCostsController = require("../controllers/munCosts.controller");
 const regIntConsumptionController = require("../controllers/regIntConsumption.controller");
 const munIntConsumptionController = require("../controllers/munIntConsumption.controller");
 const regEmployeesGenderController = require("../controllers/regEmployeesGender.controller");
-const munInpController = require("../controllers/munInp.controller");
+const munInpController = require("../controllers/geomap4/munInp.controller");
 const munWliuriController = require("../controllers/munWliuri.controller");
+const regInpController = require("../controllers/regInp.controller");
+const regWliuriController = require("../controllers/regWliuri.controller");
+
 
 // Define routes with error handling
 const handleRoute = (controller, method) => {
@@ -88,5 +91,16 @@ router.get("/getMunWliuri/:municipal_id", handleRoute(munWliuriController, 'getM
 router.get("/getMunWliuriByYearMonth", handleRoute(munWliuriController, 'getMunWliuriByYearMonth'));
 router.get("/getMunWliuriAvailablePeriods", handleRoute(munWliuriController, 'getMunWliuriAvailablePeriods'));
 
+// Regional Input endpoints (from geomap database)
+router.get("/getRegInp", handleRoute(regInpController, 'getRegInp'));
+router.get("/getRegInp/:region_id", handleRoute(regInpController, 'getRegInpByRegion'));
+router.get("/getRegInpByYearMonth", handleRoute(regInpController, 'getRegInpByYearMonth'));
+router.get("/getRegInpAvailablePeriods", handleRoute(regInpController, 'getRegInpAvailablePeriods'));
+
+// Regional Wliuri endpoints (Annual data from geomap database)
+router.get("/getRegWliuri", handleRoute(regWliuriController, 'getRegWliuri'));
+router.get("/getRegWliuri/:region_id", handleRoute(regWliuriController, 'getRegWliuriByRegion'));
+router.get("/getRegWliuriByYearMonth", handleRoute(regWliuriController, 'getRegWliuriByYearMonth'));
+router.get("/getRegWliuriAvailablePeriods", handleRoute(regWliuriController, 'getRegWliuriAvailablePeriods'));
 
 module.exports = router;
