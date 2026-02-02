@@ -46,7 +46,7 @@ exports.getMunInp = async (req, res) => {
     
     console.log("Executing query:", query);
     
-    const [results] = await db.query2(query, params);
+    const [results] = await db.query(query, params);
     
     if (!results || results.length === 0) {
       return res.status(404).json({
@@ -136,7 +136,7 @@ exports.getMunInpByMunicipal = async (req, res) => {
     
     console.log("Executing query:", query);
     
-    const [results] = await db.query2(query, params);
+    const [results] = await db.query(query, params);
     
     if (!results || results.length === 0) {
       return res.status(404).json({
@@ -202,7 +202,7 @@ exports.getMunInpByYearMonth = async (req, res) => {
     
     console.log("Executing query:", query);
     
-    const [results] = await db.query2(query, [year, month]);
+    const [results] = await db.query(query, [year, month]);
     
     if (!results || results.length === 0) {
       return res.status(404).json({
@@ -247,7 +247,7 @@ exports.getMunInpAvailablePeriods = async (req, res) => {
     
     console.log("Executing query:", query);
     
-    const [results] = await db.query2(query);
+    const [results] = await db.query(query);
     
     if (!results || results.length === 0) {
       return res.status(404).json({
