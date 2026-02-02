@@ -5,7 +5,7 @@ exports.getRegEmployed = async (req, res) => {
 
   try {
     const [rows] = await con.query(
-      `SELECT region_id, name_ge, name_en, w_${year} FROM reg_daqiravebulta_raodenoba`
+      `SELECT region_id, name_ge, name_en, w_${year} FROM [geomap].[geomap].[reg_daqiravebulta_raodenoba]`
     );
     res.json(rows);
   } catch (error) {
@@ -23,7 +23,7 @@ exports.getRegEmployedByRegionId = async (req, res) => {
 
   try {
     const [rows] = await con.query(
-      `SELECT region_id, name_ge, name_en, w_${year} FROM reg_daqiravebulta_raodenoba WHERE region_id = ?`,
+      `SELECT region_id, name_ge, name_en, w_${year} FROM [geomap].[geomap].[reg_daqiravebulta_raodenoba] WHERE region_id = ?`,
       [region_id]
     );
 

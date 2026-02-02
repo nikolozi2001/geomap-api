@@ -5,7 +5,7 @@ exports.getRegPurchases = async (req, res) => {
 
   try {
     const [rows] = await con.query(
-      `SELECT region_id, name_ge, name_en, w_${year} FROM reg_saqonelisa_da_momsaxurebis_kidvebi`
+      `SELECT region_id, name_ge, name_en, w_${year} FROM [geomap].[geomap].[reg_saqonelisa_da_momsaxurebis_kidvebi]`
     );
     res.json(rows);
   } catch (error) {
@@ -23,7 +23,7 @@ exports.getRegPurchasesByRegionId = async (req, res) => {
 
   try {
     const [rows] = await con.query(
-      `SELECT region_id, name_ge, name_en, w_${year} FROM reg_saqonelisa_da_momsaxurebis_kidvebi WHERE region_id = ?`,
+      `SELECT region_id, name_ge, name_en, w_${year} FROM [geomap].[geomap].[reg_saqonelisa_da_momsaxurebis_kidvebi] WHERE region_id = ?`,
       [region_id]
     );
 

@@ -5,7 +5,7 @@ exports.getMunEmployees = async (req, res) => {
 
   try {
     const [rows] = await con.query(
-      `SELECT municipal_, name_ge, name_en, w_${year} FROM mun_dasaqmebulta_raodenoba`
+      `SELECT municipal_, name_ge, name_en, w_${year} FROM [geomap].[geomap].[mun_dasaqmebulta_raodenoba]`
     );
     res.json(rows);
   } catch (error) {

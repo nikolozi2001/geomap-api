@@ -5,7 +5,7 @@ exports.getMunIntConsumption = async (req, res) => {
 
   try {
     const [rows] = await con.query(
-      `SELECT municipal_, name_ge, name_en, w_${year} FROM mun_shualeduri_mokhmareba`
+      `SELECT municipal_, name_ge, name_en, w_${year} FROM [geomap].[geomap].[mun_shualeduri_mokhmareba]`
     );
     res.json(rows);
   } catch (error) {

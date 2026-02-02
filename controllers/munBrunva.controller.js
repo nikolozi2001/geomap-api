@@ -13,8 +13,15 @@ exports.getMunBrunva = async (req, res) => {
 
     const year = req.query.year.toString();
 
-    // First, get the table structure
-    const [columns] = await db.query("SHOW COLUMNS FROM mun_brunva");
+    // First, get the table structure using SQL Server information schema
+    const columnsQuery = `
+      SELECT COLUMN_NAME as Field 
+      FROM INFORMATION_SCHEMA.COLUMNS 
+      WHERE TABLE_NAME = 'mun_brunva'
+      ORDER BY ORDINAL_POSITION
+    `;
+    
+    const [columns] = await db.query(columnsQuery);
     console.log(
       "Available columns:",
       columns.map((c) => c.Field)
@@ -47,8 +54,8 @@ exports.getMunBrunva = async (req, res) => {
         municipal_, 
         name_ge, 
         name_en, 
-        ${yearColumn.Field} as value 
-      FROM mun_brunva
+        [${yearColumn.Field}] as value 
+      FROM [geomap].[geomap].[mun_brunva]
     `;
 
     console.log("Executing query:", query);

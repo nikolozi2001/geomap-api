@@ -14,7 +14,7 @@ exports.getMunPayGender = async (req, res) => {
     }
 
     const [rows] = await con.query(
-      `SELECT municipal_, name_ge, name_en, F_${fyear}, M_${myear} FROM mun_xelfasi_sqesit`
+      `SELECT municipal_, name_ge, name_en, F_${fyear}, M_${myear} FROM [geomap].[geomap].[mun_xelfasi_sqesit]`
     );
 
     res.json(rows);

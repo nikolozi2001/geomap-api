@@ -5,7 +5,7 @@ exports.getValAdded = async (req, res) => {
 
   try {
     const [rows] = await con.query(
-      `SELECT  region_id, name_ge, name_en, w_${year} FROM reg_damatebuli_girebuleba`
+      `SELECT  region_id, name_ge, name_en, w_${year} FROM [geomap].[geomap].[reg_damatebuli_girebuleba]`
     );
     res.json(rows);
   } catch (error) {
@@ -23,7 +23,7 @@ exports.getValAddedByRegionId = async (req, res) => {
 
   try {
     const [rows] = await con.query(
-      `SELECT region_id, name_ge, name_en, w_${year} FROM reg_damatebuli_girebuleba WHERE region_id = ?`,
+      `SELECT region_id, name_ge, name_en, w_${year} FROM [geomap].[geomap].[reg_damatebuli_girebuleba] WHERE region_id = ?`,
       [region_id]
     );
 

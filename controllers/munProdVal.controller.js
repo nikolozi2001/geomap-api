@@ -5,7 +5,7 @@ exports.getMunProdVal = async (req, res) => {
 
   try {
     const [rows] = await con.query(
-      `SELECT municipal_, name_ge, name_en, w_${year} FROM mun_produqciis_gamoshveba`
+      `SELECT municipal_, name_ge, name_en, w_${year} FROM [geomap].[geomap].[mun_produqciis_gamoshveba]`
     );
 
     res.json(rows);
