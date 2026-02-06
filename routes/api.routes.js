@@ -81,10 +81,8 @@ router.get("/getRegEmployeesGender", handleRoute(regEmployeesGenderController, '
 router.get("/getRegEmployeesGender/:region_id", handleRoute(regEmployeesGenderController, 'getRegEmployeesGenderByRegionId'));
 
 // Municipal Input endpoints (from geomap4 database)
-router.get("/getMunInp", handleRoute(munInpController, 'getMunInp'));
-router.get("/getMunInp/:municipal_id", handleRoute(munInpController, 'getMunInpByMunicipal'));
 router.get("/getMunInpByYearMonth", handleRoute(munInpController, 'getMunInpByYearMonth'));
-router.get("/getMunInpAvailablePeriods", handleRoute(munInpController, 'getMunInpAvailablePeriods'));
+
 // Municipal Wliuri endpoints (Annual data from geomap database)
 router.get("/getMunWliuri", handleRoute(munWliuriController, 'getMunWliuri'));
 router.get("/getMunWliuri/:municipal_id", handleRoute(munWliuriController, 'getMunWliuriByMunicipal'));
