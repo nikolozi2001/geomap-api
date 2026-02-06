@@ -84,21 +84,12 @@ router.get("/getRegEmployeesGender/:region_id", handleRoute(regEmployeesGenderCo
 router.get("/getMunInpByYearMonth", handleRoute(munInpController, 'getMunInpByYearMonth'));
 
 // Municipal Wliuri endpoints (Annual data from geomap database)
-router.get("/getMunWliuri", handleRoute(munWliuriController, 'getMunWliuri'));
-router.get("/getMunWliuri/:municipal_id", handleRoute(munWliuriController, 'getMunWliuriByMunicipal'));
 router.get("/getMunWliuriByYearMonth", handleRoute(munWliuriController, 'getMunWliuriByYearMonth'));
-router.get("/getMunWliuriAvailablePeriods", handleRoute(munWliuriController, 'getMunWliuriAvailablePeriods'));
 
 // Regional Input endpoints (from geomap database)
-router.get("/getRegInp", handleRoute(regInpController, 'getRegInp'));
-router.get("/getRegInp/:region_id", handleRoute(regInpController, 'getRegInpByRegion'));
 router.get("/getRegInpByYearMonth", handleRoute(regInpController, 'getRegInpByYearMonth'));
-router.get("/getRegInpAvailablePeriods", handleRoute(regInpController, 'getRegInpAvailablePeriods'));
 
 // Regional Wliuri endpoints (Annual data from geomap database)
-router.get("/getRegWliuri", handleRoute(regWliuriController, 'getRegWliuri'));
-router.get("/getRegWliuri/:region_id", handleRoute(regWliuriController, 'getRegWliuriByRegion'));
 router.get("/getRegWliuriByYearMonth", handleRoute(regWliuriController, 'getRegWliuriByYearMonth'));
-router.get("/getRegWliuriAvailablePeriods", handleRoute(regWliuriController, 'getRegWliuriAvailablePeriods'));
 
 module.exports = router;
