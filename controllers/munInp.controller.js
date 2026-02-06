@@ -19,13 +19,7 @@ exports.getMunInpByYearMonth = async (req, res) => {
 
     const query = `
       SELECT 
-        OGR_FID,
-        municipal_,
-        name_ge,
-        name_en,
-        [month],
-        [year],
-        [value]
+        *
       FROM [geomap].[geomap].[v_mun_inp_named]
       WHERE [year] = ? AND [month] = ?
       ORDER BY municipal_ ASC
