@@ -57,3 +57,42 @@ exports.getMunWliuriByYearMonth = async (req, res) => {
   }
 };
 
+/**
+ * Get the latest year and month that has data
+ */
+exports.getLatestYearMonth = async (req, res) => {
+  try {
+    const query = `
+      SELECT TOP 1 *
+      FROM [geomap].[v_mun_wliuri_named]
+      ORDER BY [year] DESC, [month] DESC
+    `;
+
+    console.log("Executing getMunWliuriLatestYearMonth query");
+    const [results] = await db.query(query);
+    console.log("Query results:", results);
+
+    if (!results || results.length === 0) {
+      return res.status(404).json({
+        error: {
+          message: "No data found",
+          status: 404,
+        },
+      });
+    }
+
+    const data = Array.isArray(results) ? results[0] : results;
+    
+    res.json(data);
+  } catch (err) {
+    console.error("Query error:", err.message, err.stack);
+    res.status(500).json({
+      error: {
+        message: process.env.NODE_ENV === "development"
+          ? err.message
+          : "Internal Server Error",
+        status: 500,
+      },
+    });
+  }
+};

@@ -82,14 +82,19 @@ router.get("/getRegEmployeesGender/:region_id", handleRoute(regEmployeesGenderCo
 
 // Municipal Input endpoints (from geomap4 database)
 router.get("/getMunInpByYearMonth", handleRoute(munInpController, 'getMunInpByYearMonth'));
+// Municipal Input latest year-month endpoint
+router.get("/mun-inp/latest", munInpController.getLatestYearMonth);
 
 // Municipal Wliuri endpoints (Annual data from geomap database)
 router.get("/getMunWliuriByYearMonth", handleRoute(munWliuriController, 'getMunWliuriByYearMonth'));
+router.get("/mun-wliuri/latest", munWliuriController.getLatestYearMonth);
 
 // Regional Input endpoints (from geomap database)
 router.get("/getRegInpByYearMonth", handleRoute(regInpController, 'getRegInpByYearMonth'));
+router.get("/reg-inp/latest", regInpController.getLatestYearMonth);
 
 // Regional Wliuri endpoints (Annual data from geomap database)
 router.get("/getRegWliuriByYearMonth", handleRoute(regWliuriController, 'getRegWliuriByYearMonth'));
+router.get("/reg-wliuri/latest", regWliuriController.getLatestYearMonth);
 
 module.exports = router;
